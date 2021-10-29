@@ -24,7 +24,7 @@ const smartSettings = {
 // we know who he is, or all patients otherwise
 async function handler(client, res) {
     const data = await (
-        client.patient.id ? client.patient.read() : client.request("Patient")
+        client.provider.id ? client.provider.read() : client.request("Provider")
     );
     res.type("json").send(JSON.stringify(data, null, 4));
 }
