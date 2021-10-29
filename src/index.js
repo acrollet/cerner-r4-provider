@@ -13,10 +13,10 @@ app.use(session({
 
 // The settings that we use to connect to our SMART on FHIR server
 const smartSettings = {
-    clientId: "my-client-id",
+    clientId: "83448c40-aaeb-48f4-86fb-5571413b33fc",
     redirectUri: "/app",
-    scope: "launch/patient patient/*.read openid fhirUser",
-    iss: "https://launch.smarthealthit.org/v/r2/sim/eyJrIjoiMSIsImIiOiJzbWFydC03Nzc3NzA1In0/fhir"
+    scope: "user/Appointment.read user/Patient.read user/Questionnaire.read user/QuestionnaireResponse.read user/Appointment.write user/Patient.write user/QuestionnaireResponse.write",
+    iss: "https://fhir-ehr-code.cerner.com/r4/ec2458f2-1e24-41c8-b71b-0e701af7583d"
 };
 
 
@@ -27,7 +27,7 @@ async function handler(client, res) {
         client.patient.id ? client.patient.read() : client.request("Patient")
     );
     res.type("json").send(JSON.stringify(data, null, 4));
-} 
+}
 
 // =============================================================================
 // LAUNCHING
